@@ -1,0 +1,86 @@
+/* variables */
+@main-color: #00a651;
+
+html { font-size: 62.5%; }
+/* Space out content a bit */
+body {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+h1, h2, h3, h4, h5 { 
+  color: @main-color;
+}
+
+.progress-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: #000;
+      opacity: 0.5;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1001;
+      border: 1px solid #999;
+      border-radius: 6px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.5);
+      padding: 0;
+
+      header {
+        border-bottom: 2px solid @main-color;
+        padding: 15px;
+        h1 {
+          font-size: 2rem;
+          font-weight: 400;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+      p { margin-bottom: 20px; }
+      .zone { height: 150px; }
+      .load-zone {
+        padding: 15px;
+        font-size: 1.6rem;
+      }
+      .completed-zone {
+        padding: 50px 0;
+        display: none;
+      }
+
+      .progress { 
+        height: 4px;
+      }
+      .progress-bar {
+        background-color: @main-color;
+      }
+      .progress-text {
+        text-align: right;
+        font-size: 1.4rem;
+      }
+      .pd-completed { 
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-align: center;
+      }
+
+    }
+
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .progress-dialog {
+    width: 70%;
+    margin: 30px auto;
+  }
+}

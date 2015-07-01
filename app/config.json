@@ -1,0 +1,14 @@
+{
+    "dialog": {
+    	"messages":{
+    		"title": "IPscape Progress Dialog",
+    		"loading": "It's loading",
+    		"completed": "Task 100% completed"
+    		},
+        "config": {
+            "start": 0,
+            "finish": 100,
+            "duration": 2000
+        }
+    }
+}
