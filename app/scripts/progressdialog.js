@@ -58,7 +58,7 @@
 	 	this.startvalue = start;
 	 	this.finishvalue = finish;
 
-		interval = duration * finish / ((finish-start) * 100);
+		interval = duration / 100;
 
 		pdTitle.text(title);
 		pdLoading.text(loadingText);
