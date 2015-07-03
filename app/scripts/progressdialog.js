@@ -11,7 +11,9 @@
 	var pdCompleted = $('.pd-completed');
 
 	var interval = 100;
- 	var pdTimer;
+ 	var pdTimer = 0;
+ 	var step = 1;
+
 
 	function ProgressDialog() {
 		this.startvalue = 0;
@@ -28,6 +30,24 @@
 			format: 'json'
 		});
 	}
+
+	function updateProgress(step) {
+		if (step <100) {
+		    step += 1;
+		    progressValue.html(step+ ' / 100');
+		    progressBar.css('width', step+'%');
+		} else {
+			loadComplete();
+			console.log('completed');
+		}
+	}
+	function loadComplete(){
+		 clearInterval(pdTimer);
+		 loadZone.fadeOut('slow', function() {
+		 	completedZone.fadeIn('fast');
+		 });
+	}
+
 
 	ProgressDialog.prototype.init = function () {
 		var config = getLocalConfiguration();
@@ -69,23 +89,8 @@
  	ProgressDialog.prototype.start = function () {
  		var self = this;
  		this.getConfiguration.done(function () {
-	 		pdTimer = setInterval(function(){updateProgress();},interval);
-			var step = self.startvalue*100/self.finishvalue;
-			function updateProgress() {
-				if (step <100) {
-				    step += 1;
-				    progressValue.html(step+ ' / 100');
-				    progressBar.css('width', step+'%');
-				} else {
-					loadComplete();
-				}
-			}
-			function loadComplete(){
-				 clearInterval(pdTimer);
-				 loadZone.fadeOut('slow', function() {
-				 	completedZone.fadeIn('fast');
-				 });
-			}
+			step = self.startvalue*100/self.finishvalue;
+	 		pdTimer = setInterval(function(){updateProgress(step);step++;},interval);
  		});
  		
 
